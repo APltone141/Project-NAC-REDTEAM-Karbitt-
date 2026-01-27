@@ -1,6 +1,3 @@
-
----
-
 # Proof of Concept: Missing Encoding Challenge
 
 **Target:** OWASP Juice Shop
@@ -17,14 +14,14 @@ Mendapatkan foto kucing milik Bjoern dalam kondisi "melee combat-mode" yang ters
 
 Pada halaman Photo Wall, terdapat satu placeholder gambar yang rusak (*broken image*). Setelah dilakukan investigasi, ditemukan akar masalah sebagai berikut:
 
-* **Identifikasi URL:** Melalui *Inspect Element*, ditemukan path file adalah `assets/public/images/uploads/bjoern_cat#melee.jpg`.
+* **Identifikasi URL:** Melalui *Inspect Element*, ditemukan path file adalah `assets/public/images/uploads/ᓚᘏᗢ-#zatschi-#whoneedsfourlegs-1572600969477.jpg`.
 * **Karakter Ilegal:** Karakter `#` dalam URL standar dianggap sebagai **Fragment Identifier**.
 * **Perilaku Server:** Browser tidak mengirimkan data apapun yang berada setelah karakter `#` ke server. Akibatnya, server hanya menerima request untuk `bjoern_cat`, yang mana file tersebut tidak ada.
 
 | Komponen | Nilai Asli | Masalah |
 | --- | --- | --- |
-| **Path** | `.../uploads/bjoern_cat` | Diterima Server (Salah) |
-| **Fragment** | `#melee.jpg` | Diabaikan oleh Browser |
+| **Path** | `.../uploads/ᓚᘏᗢ-` | Diterima Server (Salah) |
+| **Fragment** | `#23zatschi-#23whoneedsfourlegs-1572600969477.jpg` | Diabaikan oleh Browser |
 
 ---
 
