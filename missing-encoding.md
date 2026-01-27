@@ -52,6 +52,6 @@ Pada halaman Photo Wall, terdapat satu placeholder gambar yang rusak (*broken im
 
 Berikut adalah bukti keberhasilan akses gambar kucing Bjoern:
 
+![Flag](./flag/missing-encoding.png)
 ![Flag](./flag/missing-encoding-via-inspect.png)
-![Flag](./flag/missing-encoding)
 ---
