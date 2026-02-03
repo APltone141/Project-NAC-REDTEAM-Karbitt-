@@ -1,16 +1,14 @@
-
----
-
-# Proof of Concept: Christmas 2014 Challenge
+# Proof of Concept: Christmas Special Challenge
 
 **Target:** OWASP Juice Shop
+
 **Category:** Broken Access Control (IDOR) / Sensitive Data Exposure
 
 ---
 
 ### 📝 1. Deskripsi Challenge
 
-Tujuan dari challenge ini adalah untuk memesan produk **"Christmas Special"** edisi tahun 2014. Produk ini bersifat tersembunyi (*hidden*), tidak muncul di katalog pencarian utama, dan seharusnya tidak bisa dibeli lagi karena sudah dihapus dari antarmuka pengguna (UI).
+Pesan penawaran spesial Natal tahun 2014.
 
 ### 🔍 2. Analisis Masalah
 
@@ -78,7 +76,7 @@ Ubah `ProductId` menjadi `10`.
 }
 
 ```
-
+![Flag](./flag/christmast-special-idor.png)
 
 4. **Eksekusi:**
 Teruskan (*Forward*) request yang telah dimodifikasi ke server. Server akan memproses ID `10` dan memasukkan "Christmas Special 2014" ke dalam keranjang, memicu penyelesaian challenge.
@@ -89,9 +87,7 @@ Teruskan (*Forward*) request yang telah dimodifikasi ke server. Server akan memp
 
 Berikut adalah bukti bahwa produk tersembunyi berhasil dimasukkan ke dalam keranjang belanja:
 
-![Flag](./flag/christmast-special-idor.png)
+## (929646db81fdde9492b64f2d3c5fa0a3da182ad7)
+![Flag](./flag/christmast-special-cart.png)
 ![Flag](./flag/christmast-special.png)
-
 ---
-
-Apakah format ini sudah sesuai dengan ekspektasi kamu? Jika ada bagian detail teknis (seperti URL endpoint spesifik) yang ingin dikoreksi lagi, beri tahu saya!
