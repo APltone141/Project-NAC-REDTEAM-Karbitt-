@@ -90,12 +90,6 @@ Semua 4 challenge berbeda dalam **mekanisme serangan** tetapi sama dalam **tujua
 
 Dengan kata lain, semua challenge dapat diringkas dalam satu kategori besar:
 
-###  **OWASP Top 10 - A01:2021 – Broken Access Control**
-
-Kategori ini mencakup:
-- Broken Object Level Authorization (BOLA / IDOR)
-- Broken Function Level Authorization
-- Broken Data Layer Authorization
 
 Have fun & keep learning! 
 
