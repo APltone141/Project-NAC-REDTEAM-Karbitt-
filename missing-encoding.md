@@ -6,11 +6,11 @@
 
 ---
 
-### 📝 1. Deskripsi Challenge
+###  1. Deskripsi Challenge
 
 Mendapatkan foto kucing milik Bjoern dalam kondisi "melee combat-mode" yang tersembunyi di halaman **Photo Wall**.
 
-### 🔍 2. Analisis Masalah
+###  2. Analisis Masalah
 
 Pada halaman Photo Wall, terdapat satu placeholder gambar yang rusak (*broken image*). Setelah dilakukan investigasi, ditemukan akar masalah sebagai berikut:
 
@@ -25,7 +25,7 @@ Pada halaman Photo Wall, terdapat satu placeholder gambar yang rusak (*broken im
 
 ---
 
-### 🛠️ 3. Langkah Penyelesaian (Exploitation)
+###  3. Langkah Penyelesaian (Exploitation)
 
 1. **Intercept/Inspect:** Buka browser Developer Tools (F12) dan temukan elemen gambar yang rusak.
 2. **URL Encoding:** Ubah karakter khusus `#` menjadi format yang bisa dimengerti server sebagai bagian dari nama file.
@@ -48,7 +48,7 @@ Pada halaman Photo Wall, terdapat satu placeholder gambar yang rusak (*broken im
 
 ---
 
-### 🏁 4. Flag (Evidence)
+###  4. Flag (Evidence)
 
 Berikut adalah bukti keberhasilan akses gambar kucing Bjoern:
 
