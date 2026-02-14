@@ -6,11 +6,11 @@
 
 ---
 
-### 📝 1. Deskripsi Challenge
+###  1. Deskripsi Challenge
 
 Pesan penawaran spesial Natal tahun 2014.
 
-### 🔍 2. Analisis Masalah
+###  2. Analisis Masalah
 
 Berdasarkan investigasi pada alur bisnis aplikasi, ditemukan celah pada penanganan ID produk dan kebocoran informasi melalui endpoint API yang berbeda.
 
@@ -38,7 +38,7 @@ Mekanisme "Add to Basket" (Tambah ke Keranjang) mempercayai input `ProductId` da
 
 ---
 
-### 🛠️ 3. Langkah Penyelesaian (Exploitation)
+###  3. Langkah Penyelesaian (Exploitation)
 
 Berikut adalah langkah-langkah teknis untuk mengeksploitasi celah tersebut:
 
@@ -83,7 +83,7 @@ Teruskan (*Forward*) request yang telah dimodifikasi ke server. Server akan memp
 
 ---
 
-### 🏁 4. Flag (Evidence)
+###  4. Flag (Evidence)
 
 Berikut adalah bukti bahwa produk tersembunyi berhasil dimasukkan ke dalam keranjang belanja:
 
