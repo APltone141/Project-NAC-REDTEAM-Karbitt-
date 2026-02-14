@@ -20,7 +20,7 @@ Dalam tantangan ini, mekanisme pengubahan nama user menjadi target eksploitasi. 
 
 Setelah dilakukan observasi pada platform, ditemukan bahwa fungsi pengubahan nama menggunakan metode **HTTP POST** dengan rincian sebagai berikut:
 
-* **Endpoint:** `/profile` (atau endpoint relevan pada target).
+* **Endpoint:** `/profile`.
 * **Payload:** `username=[input_nama]`.
 * **Parameter:** Hanya memerlukan satu variabel yaitu `username`.
 
@@ -39,7 +39,7 @@ Syarat mutlak keberhasilan serangan ini adalah:
 * Korban harus memiliki sesi aktif (**Active Session/Cookie**) pada browser yang sama.
 * Korban harus mengakses halaman yang telah dipasangi jebakan oleh penyerang.
 
-Dalam simulasi ini, Sebenarnya form bisa diatur untuk menggunakan JavaScript agar tercipta kondisi *zero-click* atau *one-click*. Akan tetapi karena ini hanya simulasi, form dibuat untuk melakukan submisi manual. 
+Dalam simulasi ini, Sebenarnya form bisa diatur untuk menggunakan JavaScript agar tercipta kondisi *one-click*(menekan link). Akan tetapi, karena ini hanya simulasi maka form dibuat untuk melakukan submisi manual. 
 
 ```html
     <form action="http://localhost:3000/profile" method="POST">
