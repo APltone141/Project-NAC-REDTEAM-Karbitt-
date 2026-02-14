@@ -10,7 +10,7 @@ bukankah ini My-team
 - **Captain:** Muhamad Ridwan (Akademik)
 - **Members:**
 	- M. Thoriqul Fadli (Akademik)
-	- Raihan Faiz Ramadhan (Akademik)
+	- Raihan Faiz Ramadhan (Medinfo)
 	- Ibnu Fajar (Medinfo)
 	- Arsenyius Mastry Naibaho (Medinfo)
 	- Muhammad Sahl (Medinfo)
