@@ -1,0 +1,45 @@
+---
+
+# Laporan Eksploitasi: Information Disclosure via Insecure Search Parameter
+
+## 1. Objektif Tantangan
+* **Tujuan:** Menemukan dan mengekstrak nilai **ISBN buku tertua** dari seluruh data buku yang ada di dalam sistem.
+* **Metode:** Memanfaatkan celah keamanan pada fitur pencarian aplikasi untuk mendapatkan akses ke seluruh basis data buku.
+
+## 2. Informasi Kerentanan
+* **Jenis Kerentanan:** Information Disclosure / Broken Access Control
+* **Tingkat Keparahan (Severity):** Medium
+* **Target Endpoint:** `/api/v1/books` *(sesuaikan dengan endpoint asli pada target)*
+
+## 3. Deskripsi Bug
+Terdapat kelemahan pada fitur pencarian aplikasi di mana sisi server (backend) gagal memvalidasi parameter pencarian (query string). Dengan mengosongkan parameter `search` pada URL, fungsi filter pada database gagal beroperasi sebagaimana mestinya. Akibatnya, server merespons dengan memberikan seluruh kumpulan data buku (dump data) secara utuh. Celah ini memungkinkan penyerang untuk menarik seluruh informasi katalog dan menyelesaikan tantangan (mencari ISBN buku tertua) dengan sangat mudah melalui data JSON yang bocor.
+
+## 4. Langkah-Langkah Reproduksi (Proof of Concept)
+
+**Langkah 1: Observasi Permintaan Normal**
+Akses halaman pencarian buku pada aplikasi dan cobalah melakukan pencarian dengan memasukkan kata kunci acak (misalnya: `test`).
+> **[PLACEHOLDER GAMBAR 1: Screenshot antarmuka web saat melakukan pencarian dengan input kata kunci acak]**
+
+**Langkah 2: Inspeksi Endpoint via DevTools**
+Buka **Developer Tools** pada browser (F12), kemudian arahkan ke tab **Network**. Analisis permintaan (request) yang berjalan saat fitur pencarian dieksekusi. Ditemukan bahwa aplikasi melakukan permintaan GET ke URL berikut:
+`GET https://target.com/api/v1/books?search=test`
+> **[PLACEHOLDER GAMBAR 2: Screenshot tab Network di DevTools yang menyorot URL API dan HTTP Method]**
+
+**Langkah 3: Manipulasi Parameter (Eksploitasi)**
+Lakukan manipulasi pada URL tersebut dengan menghapus nilai dari parameter `search` sehingga string menjadi kosong:
+`GET https://target.com/api/v1/books?search=`
+Akses atau kirim ulang permintaan tersebut secara langsung (bisa menggunakan browser, Burp Suite, atau alat seperti Postman).
+> **[PLACEHOLDER GAMBAR 3: Screenshot respons server yang menampilkan raw data JSON berukuran masif, berisi seluruh daftar buku di database]**
+
+**Langkah 4: Penyelesaian Tantangan**
+Setelah seluruh data buku berhasil ditarik secara penuh dalam format JSON, kita dapat dengan mudah menyortir data tersebut untuk mencari target yang diminta.
+* **Hasil ISBN Buku Tertua:** 978-0141439518
+* **Judul Buku Terkait:** Penguin Classics
+
+## 5. Dampak Kerentanan
+* **Kebocoran Data (Data Exposure):** Pengguna yang tidak berwenang dapat melakukan scraping terhadap seluruh katalog database perusahaan tanpa terdeteksi atau terblokir.
+* **Degradasi Kinerja Server:** Kueri tanpa batasan parameter berpotensi membebani memori server dan database jika jumlah data bertambah besar, yang bisa berujung pada kondisi *Denial of Service* (DoS).
+
+## 6. Mitigasi dan Rekomendasi
+1. **Validasi Input Secara Ketat:** Konfigurasikan server agar menolak kueri (mengembalikan error 400 Bad Request) atau mengembalikan *array* kosong apabila parameter pencarian tidak diisi.
+2. **Implementasi Pagination:** Wajibkan penggunaan *limit* dan *offset* pada API pencarian (misalnya membatasi respons maksimal 20 data per halaman) untuk mencegah pengunduhan seluruh database dalam satu kali permintaan.
